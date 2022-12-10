@@ -1,15 +1,27 @@
 // let hash = require('object-hash');
-import hash from 'object-hash';
-import { BlockChain } from "file:///D:/Projects/Hackathons/TechEden/CareLinkUp/CareLinkUp/blockchain/validator.js";
+//import hash from 'object-hash';
+let hash = require('object-hash');
 
-let TARGET_HASH = 15;
+let TARGET_HASH = hash(15);
 
-export class BlockChain {
+let validator = require("./validator");
+let mongoose = require('mongoose');
+let blockChainModel = mongoose.model("Blockchain");
+
+class BlockChain {
 
     //constructor
     constructor() {
         this.chain = [];
         this.current_transaction = [];
+    }
+
+    getLastBlock(callback) {
+        //get last block
+        return blockChainModel.findOne({}, null, { sort : { _id: -1}, limit: 1}, (err, block) => {
+            if (err) return console.error("Cannot find last block");
+            return callback(block);
+        });
     }
 
     addNewBlock(prevHash){
@@ -18,30 +30,32 @@ export class BlockChain {
             timestamp: Date.now(),
             transactions: this.current_transaction,
             hash: null,
-            prevHash: prevHash
-
+            prevHash: prevHash,
         };
 
         if (validator.proofOfWork()==TARGET_HASH){
-
-            //add it to the instance
-            //save to db
-            //console success
-            blockChain.addNewTransaction("person1", "person2", 300);
-            let prevHash = blockChain.lastBlock() ? blockChain.lastBlock().hash : null;
-            blockChain.addNewBlock(prevHash);
-          }
-
-        //put hash
-        this.hash=hash(block);
-        //adding to the chain
-        this.chain.push(block);
-        this.current_transaction = [];
-        return block;
+            block.hash = hash(block);
+            this.getLastBlock((lastBlock) => {
+                if (lastBlock) {
+                    block.prevHash = lastBlock.hash;
+                }
+                let newBlock = new blockChainModel(block);           
+                newBlock.save((err) => {
+                    if (err) return console.log("Cannot save the block to DB", err.message);
+                    console.log("Saved the block to DB");
+                });
+            this.chain.push(block);
+            console.log("AS REQUESTED");
+            console.log(block);
+            this.current_transaction = [];
+            return block;
+            });            
+    }
     }
 
-    addNewTransaction(sender, recipient, amount) {
-        this.current_transaction.push({sender, recipient, amount});
+    addNewTransaction(email, password, DoB, name, gender, phone, reports) {
+        this.current_transaction.push(email, password, DoB, name, gender, phone, reports);
+        console.log(email, password, DoB, name, gender, phone, reports);
     }
 
     lastBlock(){
@@ -52,5 +66,6 @@ export class BlockChain {
         return this.chain.length == 0;
     }
 }
-// module.exports = BlockChain;
+
+module.exports = BlockChain;
 

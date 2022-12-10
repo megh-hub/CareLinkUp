@@ -1,17 +1,21 @@
-module.exports.validProof = () => {
+let hash = require('object-hash');
+
+const TARGET_HASH = 15;
+
+module.exports.validProof = (proof) => {
     let guessHash = hash(proof);
     console.log("hashing: ", guessHash);
-    return guessHash == hash(PROOF);
+    return guessHash == hash(TARGET_HASH);
 }
 
 module.exports.proofOfWork = () => {
     let proof = 0;
-  while (true) {
-    if (!validProof(proof)) {
-      proof++;
-    } else {
-      break;
+    while (true) {
+        if (!module.exports.validProof(proof)) {
+            proof++;
+        } else {
+            break;
+        }
     }
-  }
-  return hash(proof);
+    return hash(proof);
 }

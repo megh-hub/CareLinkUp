@@ -1,37 +1,16 @@
 // $(document).ready(function () {
 //   $("#nav").load("header.txt");
 // });
+let database = require("./../../database/indexdb");
 
-import { BlockChain } from "file:///D:/Projects/Hackathons/TechEden/CareLinkUp/CareLinkUp/blockchain/blockChain.js";
+database.onConnect(() => {
+let BlockChain = require("./../../blockchain/blockChain");
 const blockChain = new BlockChain();
-import hash from 'object-hash';
-
-
-// let validProof = (proof) => {
-//   let guessHash = hash(proof);
-//   console.log("hash: ", guessHash);
-//   return guessHash == hash(PROOF);
-// }
-
-// let proofOfWork = () => {
-//   let proof = 0;
-//   while (true) {
-//     if (!validProof(proof)) {
-//       proof++;
-//     } else {
-//       break;
-//     }
-//   }
-//   return proof;
-// }
-
-// if (proofOfWork()==PROOF){
-//   blockChain.addNewTransaction("person1", "person2", 300);
-//   let prevHash = blockChain.lastBlock() ? blockChain.lastBlock().hash : null;
-//   blockChain.addNewBlock(prevHash);
-// }
-
+let hash = require('object-hash');
+let arr = {email: "r@email.com", password: "12345", DoB: "12/10/2001", name: "Rujul Srivastava",
+gender: "F", phone: "1234567890", reports: "Reports"};
+blockChain.addNewTransaction(arr);
+let preHash = hash(arr);
+blockChain.addNewBlock(preHash);
 console.log("chain: ", blockChain.chain);
-
-
-
+})

@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+//import mongoose from "mongoose";
+let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 //blockchain schema
@@ -12,7 +13,7 @@ let BlockChainSchema = new Schema({
         type: Schema.Types.Date,
         default: Date.now()
     },
-    transaction:{
+    transactions:{
         required: true,
         type: Schema.Types.Array,
     },
