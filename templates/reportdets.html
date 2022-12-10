@@ -9,7 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../Assets/Images/favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="profile.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/profile.css">
     <link rel="stylesheet" type="text/css" href="../Assets/Footer/footer.css">
     <link rel="stylesheet" href="../Assets/Header/headerl.css">
     <title>CareLinkUp</title>
@@ -69,7 +69,7 @@
                 <div class="col-10 ">
                     <a href="">
                         <div class="box text-center"><img class="plus" style="margin-left: 5vw; margin-top: 58px;"
-                                src="Add Project.svg" alt=""></div>
+                                src="../static/images/Add Project.svg" alt=""></div>
                     </a>
                 </div>
                 <div class="col-1"></div>
@@ -78,8 +78,8 @@
                 <div class="d-flex justify-content-center" id="bottom_square">
                     <button id="square_inactive" class="square_inactive" style="width:165px;"
                         onclick="deleteProject()">Delete</button>
-                    <button id="square_active" class="square_inactive" style="margin-left:24px; width:195px;"
-                        onclick="submitform()">Save Changes</button>
+                        <a href="../templates/patientprofile.html"><button id="square_active" class="square_inactive" style="margin-left:24px; width:195px;"
+                        onclick="submitform()">Save Changes</button></a>
                 </div>
             </div>
         </div>
