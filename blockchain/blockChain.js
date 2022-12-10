@@ -1,6 +1,10 @@
-let hash = require('object-hash');
+// let hash = require('object-hash');
+import hash from 'object-hash';
+import { BlockChain } from "file:///D:/Projects/Hackathons/TechEden/CareLinkUp/CareLinkUp/blockchain/validator.js";
 
-class BlockChain {
+let TARGET_HASH = 15;
+
+export class BlockChain {
 
     //constructor
     constructor() {
@@ -17,6 +21,17 @@ class BlockChain {
             prevHash: prevHash
 
         };
+
+        if (validator.proofOfWork()==TARGET_HASH){
+
+            //add it to the instance
+            //save to db
+            //console success
+            blockChain.addNewTransaction("person1", "person2", 300);
+            let prevHash = blockChain.lastBlock() ? blockChain.lastBlock().hash : null;
+            blockChain.addNewBlock(prevHash);
+          }
+
         //put hash
         this.hash=hash(block);
         //adding to the chain
@@ -36,6 +51,6 @@ class BlockChain {
     isEmpty(){
         return this.chain.length == 0;
     }
-
-
 }
+// module.exports = BlockChain;
+
