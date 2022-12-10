@@ -1,3 +1,7 @@
+// $(document).ready(function () {
+//   $("#nav").load("header.txt");
+// });
+
 let BlockChain = require("./blockchain/blockChain");
 let blockChain = new BlockChain();
 let hash = require('object-hash');
@@ -29,7 +33,5 @@ if (proofOfWork()==PROOF){
 
 console.log("chain: ", blockChain.chain);
 
-$(document).ready(function () {
-    $("#nav").load("header.txt");
-  });
+
 
