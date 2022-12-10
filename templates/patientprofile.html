@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./static/images/red-cross.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../static/images/red-cross.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../static/css/profile.css">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="topmost_buttons">
                     <a class=" addprojects btn btn-success" role="button">About</a>
-                    <a class=" about btn btn-success" href="" role="button">Reports</a>
+                    <a class=" about btn btn-success" href="../templates/addreport.html" role="button">Reports</a>
                 </div>
             </div>
             <div class="row">
@@ -38,8 +38,8 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12" id="save_button">
                     <div class="d-flex justify-content-center">
-                        <button id="square_inactive" class="square_inactive" onclick="update_account()">Save
-                            Changes</button>
+                        <!--<button id="square_inactive" class="square_inactive" onclick="update_account()">View requests</button>-->
+                        <a id="square_inactive" class="square_inactive" href="../templates/requests.html">View Requests</a>
                     </div>
                 </div>
             </div>
@@ -139,24 +139,6 @@
     <div id="foobottom">
 
     </div>
-    <!-- <div class="container">
-        <div id="loading" class="loading">
-            Loading&#8230;
-        </div>
-    </div> -->
 </body>
-<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
-<script type="text/javascript" src="../JS/config.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="../JS/url.js"></script>
-<script src="../JS/profile_userview.js"></script>
 
 </html>
