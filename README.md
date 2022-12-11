@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="www.carelinkup.club" target="_blank"><img src="www.carelinkup.club\static\images\Screenshot 2022-12-11 110623.png" title="TECH_EDEN" alt="TECH_EDEN"></a>
+    <a href="www.carelinkup.club" target="_blank"><img src="https://www.carelinkup.club/static/images/patient-svgrepo-com.svg" title="TECH_EDEN" alt="TECH_EDEN"></a>
 </p>
 <h1> CARELINKUP</h1>
 
