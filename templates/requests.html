@@ -68,5 +68,20 @@
     </div>
     <div id="foobottom"></div>
 </body>
+<script>
+    function sendotp(){
+    const accountSid = "AC3690e617dc6eefd0612ef722bafe4c7c"
+    const authToken = "8666e885a7f93e19c6126f233b860094"
+    const serviceSid = "VA9ed919d699d8a0776d8e83c852d9c732"
+    const client = require('twilio')(accountSid, authToken);
 
+    let phoneNumber = 9104684900;
+
+    client.verify.v2.services(serviceSid)
+                        .verifications
+                        .create({to: '+91' + phoneNumber, channel: 'sms'})
+                        .then(verification => console.log(verification.sid));
+    window.location.href='www.carlinkup.club/templates/newotp.html';
+    }
+</script>
 </html>
