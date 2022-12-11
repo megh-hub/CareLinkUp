@@ -2,7 +2,7 @@
 //import hash from 'object-hash';
 let hash = require('object-hash');
 
-let TARGET_HASH = hash(15);
+let TARGET_HASH = hash(10);
 
 let validator = require("./validator");
 let mongoose = require('mongoose');
@@ -45,6 +45,7 @@ class BlockChain {
                     console.log("Saved the block to DB");
                 });
             this.chain.push(block);
+            console.log(44);
             console.log("AS REQUESTED");
             console.log(block);
             this.current_transaction = [];
@@ -54,8 +55,11 @@ class BlockChain {
     }
 
     addNewTransaction(email, password, DoB, name, gender, phone, reports) {
-        this.current_transaction.push(email, password, DoB, name, gender, phone, reports);
+        let temp = [email, password, DoB, name, gender, phone, reports];
+        this.current_transaction.push(temp);
+        console.log(45);
         console.log(email, password, DoB, name, gender, phone, reports);
+        console.log(this.current_transaction.email);
     }
 
     lastBlock(){

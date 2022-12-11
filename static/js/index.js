@@ -9,8 +9,9 @@ const blockChain = new BlockChain();
 let hash = require('object-hash');
 let arr = {email: "r@email.com", password: "12345", DoB: "12/10/2001", name: "Rujul Srivastava",
 gender: "F", phone: "1234567890", reports: "Reports"};
-blockChain.addNewTransaction(arr);
-let preHash = hash(arr);
-blockChain.addNewBlock(preHash);
+
+blockChain.addNewTransaction(arr.email, arr.password, arr.DoB, arr.name, arr.gender, arr.phone, arr.reports);
+// let preHash = hash(arr);
+blockChain.addNewBlock();
 console.log("chain: ", blockChain.chain);
 })
