@@ -22,7 +22,7 @@
 							<h4 class="card-title">Enter the OTP.</h4>
 							<input type="text" class="text4" id="enter_code" autocomplete="off" placeholder="Enter Code">
 							<div class="joins">
-								<input type="submit" class="button2" value="Authenticate" onclick="join()">
+								<input type="submit" class="button2" value="Authenticate" onclick="verifyotp()">
 							</div>
 						</div>
 					</div>
@@ -35,5 +35,21 @@
 		<div class="row dam1">
 	</div>
 </body>
+<script>
+	function verifyotp(){
+	const accountSid = "AC3690e617dc6eefd0612ef722bafe4c7c"
+    const authToken = "8666e885a7f93e19c6126f233b860094"
+    const serviceSid = "VA9ed919d699d8a0776d8e83c852d9c732"
+    const client = require('twilio')(accountSid, authToken);
+	
+	let verificationCode = document.getElementByID("enter_code").value();
 
+    let phoneNumber = 9104684900;
+
+	client.verify.v2.services(serviceSid)
+                    .verificationChecks
+                    .create({to : '+91'+phoneNumber, code: ''+verificationCode})
+                    .then(verification_check => console.log(verification_check.status));
+	}
+</script>
 </html>
